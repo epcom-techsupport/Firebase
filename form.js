@@ -1,14 +1,15 @@
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 var firebaseConfig = {
-    apiKey: "AIzaSyCRgnYQsglQtJLt5xBry2NYqFF-yBFzfq0",
-    authDomain: "epcomlogin.firebaseapp.com",
-    projectId: "epcomlogin",
-    storageBucket: "epcomlogin.appspot.com",
-    messagingSenderId: "1024559495424",
-    appId: "1:1024559495424:web:a4c3e3ded58178fcf35be5",
-    measurementId: "G-W4BDYKZ4EG",
-    databaseURL: "https://epcomlogin-default-rtdb.firebaseio.com/"
+    apiKey: "AIzaSyCrTEaIYd-epx6q2NKr86vIwr3Dc6PjBtQ",
+    authDomain: "techsupportlogin-9a4bf.firebaseapp.com",
+    projectId: "techsupportlogin-9a4bf",
+    storageBucket: "techsupportlogin-9a4bf.appspot.com",
+    messagingSenderId: "565960468108",
+    appId: "1:565960468108:web:6052440ede75ee52e87da9",
+    measurementId: "G-ZX8J3YHC15",
+    databaseURL: "https://techsupportlogin-9a4bf-default-rtdb.firebaseio.com/"
+
 };
 // Initialize Firebase
 var defaultProject = firebase.initializeApp(firebaseConfig);
@@ -38,6 +39,7 @@ function signIn() {
     const promise = auth.signInWithEmailAndPassword(email.value, password.value);
     promise.catch(e => alert(e.message));
 
+    alert("Signed In");
 
 
 
@@ -60,8 +62,23 @@ auth.onAuthStateChanged(function (user) {
 
         firebase.database().ref('/users/' + userId).once('value').then((snapshot) => {
             var username = (snapshot.val() && snapshot.val().username) || 'Anonymous';
-            console.log(username)
+            var age = (snapshot.val() && snapshot.val().age) || '0';
+            console.log('username', username)
+            console.log('age', age)
         });
+
+        firebase.database().ref('/result/' + userId).once('value').then((snapshot) => {
+            var bm = (snapshot.val() && snapshot.val().bm) || '';
+            var cn = (snapshot.val() && snapshot.val().cn) || '';
+            console.log('bm', bm)
+            console.log('cn', cn)
+        });
+
+        var updateResult = firebase.database().ref('/result/' + userId);
+      
+        var updates = {};
+        updates['/result/' + userId + '/cn'  ] = 'a6';
+        firebase.database().ref().update(updates);
         // alert("Active User " + email);
         //Take user to a different or home page
 
@@ -77,5 +94,3 @@ auth.onAuthStateChanged(function (user) {
 
 });
 var database = firebase.database();
-
-
