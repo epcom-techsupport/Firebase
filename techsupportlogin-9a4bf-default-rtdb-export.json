@@ -1,0 +1,22 @@
+{
+  "result" : {
+    "PptSAqvcEkd3Ocm2sbAMP4kVOWf1" : {
+      "bm" : "A1",
+      "cn" : "A2"
+    }
+  },
+  "users" : {
+    "ALsgofaSE2eHE1l6RqYnLtBaZmC3" : {
+      "age" : 18,
+      "email" : "elson@gmail.com",
+      "name" : "Elson",
+      "username" : "Handsome Elson"
+    },
+    "PptSAqvcEkd3Ocm2sbAMP4kVOWf1" : {
+      "age" : 33,
+      "email" : "lteryi@gmail.com",
+      "name" : "Ter Yi",
+      "username" : "Lee Ter Yi"
+    }
+  }
+}
