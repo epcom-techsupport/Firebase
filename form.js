@@ -59,7 +59,7 @@ auth.onAuthStateChanged(function (user) {
     if (user) {
         var email = user.email;
         var userId = firebase.auth().currentUser.uid;
-
+        console.log(email)
         firebase.database().ref('/users/' + userId).once('value').then((snapshot) => {
             var username = (snapshot.val() && snapshot.val().username) || 'Anonymous';
             var age = (snapshot.val() && snapshot.val().age) || '0';
